@@ -10,6 +10,9 @@ const pool = new Pool({
       : process.env.TEST_DB_DATABASE,
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
+  ssl: {
+    rejectUnauthorized: false, // Disable certificate verification for development/testing
+  },
 });
 
 module.exports.query = (text, params, callback) => {
